@@ -1,0 +1,113 @@
+<html>
+  <head>
+	  <!-- Latest compiled and minified CSS -->
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+	  <!-- Optional theme -->
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	</head>
+	<body>
+		<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ["Location", "Percentage of trips", { role: "style" } ],
+		  ["EM002",4,'red'],
+		  ["EM003",5,'red'],
+		  ["EM004",2,'red'],
+		  ["EM005",4,'red'],
+		  ["EM006",55, 'green'],
+		  ["EM007",5,'red'],
+		  ["EM008",1,'red'],
+		  ["EM009",3,'red'],
+		  ["EM010",16,'gold'],
+		  ["EM011",5,'red']
+        ]);
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+                         { calc: "stringify",
+                           sourceColumn: 1,
+                           type: "string",
+                           role: "annotation" },
+                         2]);
+
+        var options = {
+          title: "Distribution of Trips originating from EM003 on Tuesday October 14th",
+          width: "100%",
+          height: 400,
+          bar: {groupWidth: "95%"},
+          legend: { position: "none" },
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+        chart.draw(view, options);
+    }
+	
+	function initialize() {
+	  
+	}
+
+
+	
+	
+    </script>
+	<div class='container'>
+		<a href='index.htm'><h1>Origin Destination Summary</h1></a>
+		<div class="panel panel-default">
+			<ul class="nav nav-tabs nav-justified" role="tablist">
+			  <li><a href="#">EM001</a></li>
+			  <li><a href="02chart.htm">EM002</a></li>
+			  <li class="active"><a href="03.htm">EM003</a></li>
+			  <li><a href="#">EM004</a></li>
+			  <li><a href="#">EM005</a></li>
+			  <li><a href="#">EM006</a></li>
+			  <li><a href="#">EM007</a></li>
+			  <li><a href="#">EM008</a></li>
+	          <li>
+	             <a href="#" class="dropdown-toggle" data-toggle="dropdown">more...<span class="caret"></span></a>
+	             <ul class="dropdown-menu" role="menu">
+			       <li><a href="#">EM009</a></li>
+			       <li><a href="#">EM010</a></li>  
+	             </ul>
+	           </li>
+
+			</ul>
+			
+				<div id="map-canvas" style="height: 284px; width: 100%; background-image: url('3.png'); background-repeat: no-repeat; background-size: 100%">
+					
+				</div>
+			<div class="panel panel-body">
+
+			</div>
+
+	
+	<ul class="nav nav-tabs nav-justified" role="tablist">
+	  <li><a href="#">Sunday</br>12/10/14</a></li>
+	  <li><a href="#">Monday</br>13/10/14</a></li>
+	  <li class="active"><a href="#">Tuesday</br>14/10/14</a></li>
+	  <li><a href="#">Wednesday</br>15/10/14</a></li>
+	  <li><a href="#">Thursday</br>16/10/14</a></li>
+	  <li><a href="#">Friday</br>17/10/14</a></li>
+	  <li><a href="#">Saturday</br>18/10/14</a></li>
+      <li>
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown">more...<span class="caret"></span></a>
+         <ul class="dropdown-menu" role="menu">
+	       <li><a href="#"><a href="#">Weely Avg</br>13/10/14</a></a></li>
+	       <li><a href="#"><a href="#">BiWeekly Avg</br>06/10/14</a></a></li>  
+         </ul>
+       </li>
+	</ul>
+	
+  <div id="columnchart_values" style="width: 100%; height: 400px;"></div>
+
+</div>
+</div>
+
+</body>
+</html>
